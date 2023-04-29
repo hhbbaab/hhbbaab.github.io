@@ -1,36 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Forum</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+	<title>小游戏</title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+		#game-board {
+			width: 400px;
+			height: 400px;
+			border: 1px solid black;
+			margin: 0 auto;
+			position: relative;
+		}
+
+		#player {
+			background-color: red;
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			left: 190px;
+			top: 380px;
+		}
+
+		#enemy {
+			background-color: blue;
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			left: 180px;
+			top: 50px;
+		}
+	</style>
 </head>
 <body>
-    <header>
-        <h1>My Forum</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Forum</a></li>
-                <li><a href="#">Login</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2>Welcome to My Forum</h2>
-            <p>This is a forum for discussing various topics.</p>
-        </section>
-        <section>
-            <h2>Recent Posts</h2>
-            <ul>
-                <li><a href="#">Post Title 1</a></li>
-                <li><a href="#">Post Title 2</a></li>
-                <li><a href="#">Post Title 3</a></li>
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; My Forum 2021</p>
-    </footer>
+
+<div id="game-board">
+	<div id="player"></div>
+	<div id="enemy"></div>
+</div>
+
+<script type="text/javascript">
+	var player = document.getElementById('player');
+	var enemy = document.getElementById('enemy');
+	var gameBoard = document.getElementById('game-board');
+
+	var playerLeft = parseInt(window.getComputedStyle(player).getPropertyValue('left'));
+
+	function moveEnemy() {
+		var enemyTop = parseInt(window.getComputedStyle(enemy).getPropertyValue('top'));
+		enemy.style.top = (enemyTop + 50) + 'px';
+		if (enemyTop >= 380) {
+			alert("Game Over");
+			clearInterval(enemyMove);
+		}
+	}
+
+	var enemyMove = setInterval(moveEnemy, 500);
+
+	document.addEventListener('keydown', function(event) {
+	  if (event.code === 'ArrowLeft') {
+	    playerLeft -= 10;
+	  }
+	  else if (event.code === 'ArrowRight') {
+	    playerLeft += 10;
+	  }
+	  player.style.left = playerLeft + 'px';
+
+	  if (playerLeft < 0 || playerLeft > 380) {
+	  	alert("Game Over");
+		clearInterval(enemyMove);
+	  }
+
+	  var playerTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
+	  var enemyTop = parseInt(window.getComputedStyle(enemy).getPropertyValue('top'));
+	  var enemyLeft = parseInt(window.getComputedStyle(enemy).getPropertyValue('left'));
+
+	  if (playerTop <= (enemyTop + 20) && enemyTop <= (playerTop + 20) && playerLeft <= (enemyLeft + 20) && enemyLeft <= (playerLeft + 20)) {
+	    alert("Game Over");
+	    clearInterval(enemyMove);
+	  }
+	});
+
+</script>
+
 </body>
 </html>
