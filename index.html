@@ -1,46 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>论坛帖子</title>
-	<style>
-		/* 样式表，用于设置页面样式 */
-	</style>
+    <meta charset="UTF-8">
+    <title>网页论坛</title>
+    <style>
+        /* 网页样式 */
+    </style>
 </head>
 <body>
-	<header>
-		<!-- 头部内容，包括论坛名称、导航等 -->
-	</header>
-	<main>
-		<article>
-			<!-- 帖子的主要内容，包括标题、作者、时间、正文等 -->
-			<h1>帖子标题</h1>
-			<p>作者：<span class="author">用户名</span></p>
-			<p>发表时间：<time datetime="2023-04-30T08:30:00Z">2023年4月30日 08:30</time></p>
-			<div class="content">
-				<p>帖子正文内容</p>
-			</div>
-		</article>
-		<section>
-			<!-- 评论区域，包括评论表单和已有评论列表 -->
-			<h2>评论</h2>
-			<form action="#" method="post">
-				<label for="comment">发表评论：</label>
-				<textarea id="comment" name="comment"></textarea>
-				<input type="submit" value="提交评论">
-			</form>
-			<ul class="comments">
-				<li class="comment">
-					<p>评论内容</p>
-					<p>评论者：<span class="author">用户名</span></p>
-					<p>评论时间：<time datetime="2023-04-30T09:00:00Z">2023年4月30日 09:00</time></p>
-				</li>
-				<!-- 可以有多个评论 -->
-			</ul>
-		</section>
-	</main>
-	<footer>
-		<!-- 底部，包括版权信息、联系方式等 -->
-	</footer>
+    <header>
+        <h1>网页论坛</h1>
+        <nav>
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">讨论板块</a></li>
+                <li><a href="#">加入我们</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="forum-list">
+            <h2>论坛板块</h2>
+            <ul>
+                <li><a href="#">规则说明</a></li>
+                <li><a href="#">会员介绍</a></li>
+                <li><a href="#">聊天室</a></li>
+            </ul>
+        </section>
+        <section id="topic-list">
+            <h2>帖子列表</h2>
+            <ul>
+                <li>
+                    <a href="#">
+                        <h3>帖子标题1</h3>
+                        <p>作者：用户名1 发表时间：2023年5月1日</p>
+                        <p>帖子内容摘要1</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h3>帖子标题2</h3>
+                        <p>作者：用户名2 发表时间：2023年5月2日</p>
+                        <p>帖子内容摘要2</p>
+                    </a>
+                </li>
+                <!-- 其他帖子 -->
+            </ul>
+        </section>
+        <section id="topic-detail">
+            <h2>帖子详情</h2>
+            <div class="post">
+                <h3>帖子标题1</h3>
+                <p>作者：用户名1 发表时间：2023年5月1日</p>
+                <div class="content">
+                    <p>帖子内容1</p>
+                </div>
+                <hr>
+                <h3>回复</h3>
+                <ul class="comments">
+                    <li>
+                        <p>回复1</p>
+                        <p>作者：用户名2 回复时间：2023年5月2日</p>
+                    </li>
+                    <!-- 其他回复 -->
+                </ul>
+                <form method="post" action="submit.php">
+                    <textarea name="comment"></textarea>
+                    <input type="submit" value="发表回复">
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        &copy; 2023 网页论坛公司。保留所有权利。
+    </footer>
+    <script>
+        // 前端交互处理
+    </script>
 </body>
 </html>
